@@ -1,0 +1,32 @@
+Write a query to display the average monthly ticket cost for each flight in ABC Airlines. The query should 
+display the Flight_Id,From_location,To_Location,Month Name as "Month_Name" and average price as 
+"Average_Price" 
+Display the records sorted in ascending order based on flight id and then by Month Name.
+
+mysql> select f1.flight_id, f1.from_location, f1.to_location, f2.Month_Name, f2.Average_price from air_flight f1,
+    -> (select flight_id, MonthName(flight_departure_date) as Month_Name, avg(price) as Average_price
+    -> from air_flight_details group by flight_id,  MonthName(flight_departure_date) ) f2
+    -> where f1.flight_id = f2.flight_id and f1.airline_name = "ABC AIRLINES"
+    -> order by f1.flight_id, f2.Month_Name;
++-----------+---------------+-------------+------------+---------------+
+| flight_id | from_location | to_location | Month_Name | Average_price |
++-----------+---------------+-------------+------------+---------------+
+| 1011      | HYDERABAD     | CHENNAI     | April      |   4614.000000 |
+| 1011      | HYDERABAD     | CHENNAI     | May        |   3855.500000 |
+| 1262      | HYDERABAD     | CHENNAI     | May        |   3444.500000 |
+| 1265      | CHENNAI       | HYDERABAD   | April      |   4086.000000 |
+| 1265      | CHENNAI       | HYDERABAD   | May        |   3303.666667 |
+| 289       | CHENNAI       | KOCHI       | May        |   3257.750000 |
+| 3004      | BENGALURU     | CHENNAI     | May        |   3319.666667 |
+| 3013      | CHENNAI       | BENGALURU   | May        |   3257.750000 |
+| 3148      | CHENNAI       | BENGALURU   | June       |   2773.000000 |
+| 3148      | CHENNAI       | BENGALURU   | May        |   3052.000000 |
+| 3241      | CHENNAI       | KOCHI       | May        |   3303.666667 |
+| 3244      | KOCHI         | CHENNAI     | May        |   3371.500000 |
+| 3307      | BENGALURU     | CHENNAI     | May        |   3379.000000 |
+| 916       | CHENNAI       | HYDERABAD   | April      |   4086.000000 |
+| 916       | CHENNAI       | HYDERABAD   | May        |   3570.666667 |
++-----------+---------------+-------------+------------+---------------+
+15 rows in set (0.01 sec)
+
+
