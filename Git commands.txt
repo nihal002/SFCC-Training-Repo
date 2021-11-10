@@ -1,0 +1,19 @@
+git int
+git add .
+git commit -m "message"
+
+/*********{git branch
+git branch [branch_name]
+git checkout [branch_name] }*********/
+
+git remote add origin  [repo url]
+git push -u origin [branch_name]
+
+
+digitech1993@gmail.com
+
+Assessment Module
+8-Nov	Devops,DB, Java 11 & Design Principles, JDBC
+10-Nov	Server Side Java EE
+15-Nov	HTML, CSS, ES6, JS,JQuery
+17-Nov	Node JS
